@@ -1,0 +1,91 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true;
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    testCompile 'junit:junit:4.12'
+
+
+    /*
+    * 更好的使用多Fragment架构
+    *
+    * 详情参考：https://github.com/YoKeyword/Fragmentation
+    */
+    compile 'me.yokeyword:fragmentation:0.10.1'
+    compile 'me.yokeyword:fragmentation-swipeback:0.7.9'
+
+    /*
+    *  android特色的底部导航栏
+    */
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
+
+    /*
+    *  用于加载图片
+    */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+
+    /*
+    *  下拉刷新控件，可以自定义头部
+    *
+    *  详情参考：https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh
+    */
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+
+
+    /*
+    *  图片banner
+    */
+    compile 'com.youth.banner:banner:1.4.1'
+
+
+    /*
+     * 图片点击效果实现，用于添加回弹动效
+     */
+    compile 'com.facebook.rebound:rebound:0.3.6'
+
+
+    /*
+    *  用于图片处理，高斯模糊
+    */
+    compile 'net.qiujuer.genius:blur:2.0.0'
+
+    /*
+   * 基于retrofit2和RxJava的网络请求框架
+   * 需要添加
+   *    repositories {
+   *       maven { url "https://jitpack.io" }
+   *   }
+   *
+   * 详情参考：http://www.jianshu.com/p/d7734390895e
+   */
+    compile 'com.tamic.novate:novate:1.1.0'
+}

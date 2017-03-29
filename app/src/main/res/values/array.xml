@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app 的功能列表名称 -->
+    <string-array name="list_function_name">
+        <item>@string/list_fragment_name_detail</item>
+        <item>@string/list_fragment_name_notes</item>
+    </string-array>
+
+
+    <!-- category tab list -->
+    <string-array name="category_tab_list">
+        <item>@string/category_tab_un_finish</item>
+        <item>@string/category_tab_finish</item>
+    </string-array>
+
+</resources>

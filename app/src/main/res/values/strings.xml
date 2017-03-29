@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Note</string>
+
+    <string name="main_user_name">未命名</string>
+
+    <!--app 功能列表名称-->
+    <string name="list_fragment_name_detail">任务清单</string>
+    <string name="list_fragment_name_notes">笔记本</string>
+
+    <!-- category tab -->
+    <string name="category_tab_un_finish">未完成</string>
+    <string name="category_tab_finish">已完成</string>
+
+    <string name="calendar_tab_past">提醒日</string>
+    <string name="create_task_title">创建清单</string>
+    <string name="create_task_button">创建</string>
+    <string name="create_task_title_hint_edit_view">标题</string>
+    <string name="change_task_title">修改标题</string>
+    <string name="string_agree">确定</string>
+    <string name="change_task_alarm">修改提醒时间</string>
+    <string name="input_detail">请输入任务</string>
+
+</resources>
