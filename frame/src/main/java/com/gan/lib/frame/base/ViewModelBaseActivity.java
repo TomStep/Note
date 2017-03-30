@@ -1,13 +1,9 @@
 package com.gan.lib.frame.base;
 
-import android.content.Context;
-import android.content.Intent;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import com.gan.lib.frame.viewmodel.AbstractViewModel;
 import com.gan.lib.frame.viewmodel.IView;
 import com.gan.lib.frame.viewmodel.ProxyViewHelper;
@@ -15,7 +11,7 @@ import com.gan.lib.frame.viewmodel.ViewModelHelper;
 import com.gan.lib.frame.viewmodel.binding.ViewModelBindingConfig;
 
 
-public abstract class ViewModelBaseActivity<T extends IView, R extends AbstractViewModel<T>,B extends ViewDataBinding> extends ViewModelBaseEmptyActivity implements IView  {
+public abstract class ViewModelBaseActivity<T extends IView, R extends AbstractViewModel<T>> extends ViewModelBaseEmptyActivity implements IView  {
 
     @NonNull
     private final ViewModelHelper<T, R> mViewModeHelper = new ViewModelHelper<>();
@@ -96,14 +92,4 @@ public abstract class ViewModelBaseActivity<T extends IView, R extends AbstractV
         return null;
     }
 
-    @SuppressWarnings("unused")
-    @NonNull
-    public B getBinding() {
-        try {
-            return (B) mViewModeHelper.getBinding();
-        } catch (ClassCastException ex) {
-            throw new IllegalStateException("Method getViewModelBindingConfig() has to return same " +
-                    "ViewDataBinding type as it is set to base Fragment");
-        }
-    }
 }

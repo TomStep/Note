@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * main view pager fragment factory
- * 管理main viewPager中需要的所有fragment
+ * manager main viewPager中需要的所有fragment
  * Created by tangjun on 2017/3/29.
  */
 
@@ -79,10 +79,8 @@ public class MainViewPagerFragmentFactory {
             case FifteenWord:
                 fragment = FifteenWordFragment.newInstance();
                 break;
-
             case Ethermetic:
                 break;
-
             default:
                 break;
         }
@@ -90,15 +88,4 @@ public class MainViewPagerFragmentFactory {
         mFragments.put(index.name(),fragment);
         return fragment;
     }
-
-    /**
-     * @return mFragments number
-     */
-    public int getFragmentsSize(){
-        if(mFragments != null){
-           return mFragments.size();
-        }
-        return 0;
-    }
-
 }

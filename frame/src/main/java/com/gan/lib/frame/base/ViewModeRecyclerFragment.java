@@ -7,25 +7,37 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import com.bumptech.glide.Glide;
 import com.gan.lib.frame.R;
 import com.gan.lib.frame.base.view.IRecyclerView;
 import com.gan.lib.frame.base.view.RecyclerViewModel;
-import com.gan.lib.frame.databinding.FragmentRecyclerBinding;
+import com.gan.lib.frame.view.recycler.AutoLoadRecyclerView;
 import com.gan.lib.frame.view.recycler.DividerItemDecoration;
-import com.gan.lib.frame.viewmodel.binding.ViewModelBindingConfig;
 
 /**
  * 带有RecyclerView的基础fragment
  * Created by tangjun on 2017/3/29.
  */
-public class ViewModeRecyclerFragment<M extends RecyclerViewModel>
-        extends ViewModelBaseBindingFragment<IRecyclerView,M,FragmentRecyclerBinding>
-        implements IRecyclerView {
+public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewModelBaseFragment<IRecyclerView,M> implements IRecyclerView {
+
+    /**
+     *  AutoLoadRecyclerView
+     */
+    private AutoLoadRecyclerView mRecyclerView;
+    /**
+     *  SwipeRefreshLayout
+     */
+    private SwipeRefreshLayout mRefreshLayout;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mRecyclerView = (AutoLoadRecyclerView) view.findViewById(R.id.recycler_view);
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
 
         //初始化RefreshLayout
         initRefreshLayout();
@@ -36,18 +48,18 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel>
 
     @Nullable
     @Override
-    public ViewModelBindingConfig getViewModelBindingConfig() {
-        return new ViewModelBindingConfig(R.layout.fragment_recycler, _mActivity);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_recycler, container, false);
     }
 
     @Override
     public SwipeRefreshLayout getRefreshLayout() {
-        return getBinding().swipeRefreshLayout;
+        return mRefreshLayout;
     }
 
     @Override
-    public RecyclerView getRecyclerView() {
-        return getBinding().recyclerView;
+    public AutoLoadRecyclerView getRecyclerView() {
+        return mRecyclerView;
     }
 
     @Override
@@ -76,9 +88,7 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel>
     @Override
     public void initRefreshLayout() {
         //设置进度条的颜色主题，最多能设置四种 加载颜色是循环播放的，只要没有完成刷新就会一直循环。
-        getRefreshLayout().setColorSchemeColors(
-                Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
-
+        getRefreshLayout().setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
         // 设置手指在屏幕下拉多少距离会触发下拉刷新
         getRefreshLayout().setDistanceToTriggerSync(300);
         // 设定下拉圆圈的背景
@@ -92,4 +102,18 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel>
         getRefreshLayout().setOnRefreshListener(listener);
     }
 
+    @Override
+    public void setLoadingMoreListener(AutoLoadRecyclerView.onLoadMoreListener loadingMoreListener) {
+        getRecyclerView().setLoadMoreListener(loadingMoreListener);
+    }
+
+    @Override
+    public void setLoadMoreContinue() {
+        getRecyclerView().loadMoreContinue();
+    }
+
+    @Override
+    public void setOnPauseListenerParams(boolean pauseOnScroll, boolean pauseOnFling) {
+        getRecyclerView().setOnPauseListenerParams(Glide.with(_mActivity),pauseOnScroll,pauseOnFling);
+    }
 }
