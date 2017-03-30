@@ -1,6 +1,7 @@
 package com.gan.lib.frame.base;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,8 @@ import com.gan.lib.frame.base.view.IRecyclerView;
 import com.gan.lib.frame.base.view.RecyclerViewModel;
 import com.gan.lib.frame.view.recycler.AutoLoadRecyclerView;
 import com.gan.lib.frame.view.recycler.DividerItemDecoration;
+
+import java.util.List;
 
 /**
  * 带有RecyclerView的基础fragment
@@ -78,7 +81,7 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewM
         getRecyclerView().setItemAnimator(new DefaultItemAnimator());
         //添加分割线
         getRecyclerView().addItemDecoration(new DividerItemDecoration(
-                getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
+                getActivity(), DividerItemDecoration.VERTICAL_LIST,0,Color.WHITE));
 
     }
 
@@ -103,6 +106,11 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewM
     }
 
     @Override
+    public void setRefreshFinish() {
+        if(getRefreshLayout().isRefreshing()) getRefreshLayout().setRefreshing(false);
+    }
+
+    @Override
     public void setLoadingMoreListener(AutoLoadRecyclerView.onLoadMoreListener loadingMoreListener) {
         getRecyclerView().setLoadMoreListener(loadingMoreListener);
     }
@@ -116,4 +124,15 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewM
     public void setOnPauseListenerParams(boolean pauseOnScroll, boolean pauseOnFling) {
         getRecyclerView().setOnPauseListenerParams(Glide.with(_mActivity),pauseOnScroll,pauseOnFling);
     }
+
+    @Override
+    public void setAutoRefresh() {
+        getRefreshLayout().post(new Runnable() {
+            @Override
+            public void run() {
+                getRefreshLayout().setRefreshing(true);
+            }
+        });
+    }
+
 }

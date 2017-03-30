@@ -7,6 +7,8 @@ import com.gan.lib.frame.base.ViewModelBaseActivity;
 import com.gan.lib.frame.base.ViewModelBaseFragment;
 import com.gan.lib.frame.viewmodel.binding.ViewModelBindingConfig;
 
+import java.util.List;
+
 
 /**
  * Any Activity or Fragment that needs a ViewModel needs to implement this interface.

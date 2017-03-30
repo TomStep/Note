@@ -15,7 +15,7 @@ public class CustomSetters {
      * 加载圆形图片
      * ImageView
      *      circleUrl   : 图片地址
-     *      circleError : drawable类型，xml中可以写成 @drawable/xxx
+     *      circleError : drawable类型，xml中可以写成 @{@drawable/ic_launcher}
      */
     @BindingAdapter({"circleUrl","circleError"})
     public static void setCircleImg(ImageView view, String url, Drawable error){
@@ -26,9 +26,9 @@ public class CustomSetters {
      * 加载网络图片
      * ImageView
      *      url   : 图片地址
-     *      urlError : drawable类型，xml中可以写成 @drawable/xxx
+     *      urlError : drawable类型，xml中可以写成 @{@drawable/ic_launcher}
      */
-    @BindingAdapter({"url","urlError"})
+    @BindingAdapter({"url","error"})
     public static void setImgfromUrl(ImageView view,String url,Drawable error){
         AppUtils.getImageTools().loadImage(view,url,error);
     }

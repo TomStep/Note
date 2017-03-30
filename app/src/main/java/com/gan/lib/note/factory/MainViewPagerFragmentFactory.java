@@ -15,7 +15,7 @@ import java.util.Map;
 public class MainViewPagerFragmentFactory {
 
     public enum MainFragments {
-        FifteenWord("15言"),           //15言
+        FifteenWord("十五言"),           //15言
         Ethermetic("Ethermetic")      //Ethermetic
         ;
 

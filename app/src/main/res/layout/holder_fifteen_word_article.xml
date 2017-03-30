@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="entiry"
+            type="com.gan.lib.note.entiry.FifteenWordEntiry"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:id="@+id/fontTextView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{entiry.title}"
+                    android:textColor="@color/textColorGray" />
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fontTextView"
+                    android:layout_alignLeft="@+id/fontTextView"
+                    android:layout_alignStart="@+id/fontTextView"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/textColorGrayDark"
+                    android:text="@{entiry.title_sub}"
+                    android:ellipsize="end"
+                    android:maxLines="1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:circleUrl="@{entiry.userImg}"
+                        app:circleError="@{@drawable/ic_launcher}"/>
+
+                    <com.gan.lib.frame.view.font.FontTextView
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="@color/textColorGrayDark"
+                        android:text="@{entiry.userName}"/>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:url="@{entiry.imgUrl}"
+                app:error="@{@drawable/ic_launcher}"/>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

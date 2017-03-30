@@ -10,4 +10,5 @@ import com.gan.lib.frame.viewmodel.AbstractViewModel;
 public abstract class RecyclerViewModel extends AbstractViewModel<IRecyclerView>{
 
 
+
 }

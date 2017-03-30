@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import com.gan.lib.frame.view.recycler.AutoLoadRecyclerView;
 import com.gan.lib.frame.viewmodel.IView;
 
+import java.util.List;
+
 /**
  * RecyclerView fragment 的接口view
  * Created by tangjun on 2017/3/29.
@@ -48,6 +50,11 @@ public interface IRecyclerView extends IView{
     void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener);
 
     /**
+     *  设置下拉刷新完成
+     */
+    void setRefreshFinish();
+
+    /**
      *  设置加载更多
      */
     void setLoadingMoreListener(AutoLoadRecyclerView.onLoadMoreListener loadingMoreListener);
@@ -64,4 +71,8 @@ public interface IRecyclerView extends IView{
      */
     void setOnPauseListenerParams(boolean pauseOnScroll, boolean pauseOnFling);
 
+    /**
+     * 设置自动刷新
+     */
+    void setAutoRefresh();
 }
