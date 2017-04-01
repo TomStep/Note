@@ -21,5 +21,4 @@ public class FifteenWordVH extends RecyclerView.ViewHolder {
     public void bind(FifteenWordEntiry entiry){
         mBinding.setEntiry(entiry);
     }
-
 }

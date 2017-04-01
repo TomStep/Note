@@ -1,11 +1,10 @@
 package com.gan.lib.note;
 
-import com.gan.lib.note.data.FifteenDocument;
-import com.gan.lib.note.entiry.FifteenWordEntiry;
+import com.gan.lib.note.data.FifteenArticleDoc;
+import com.gan.lib.note.data.FifteenItemDoc;
+import com.gan.lib.note.entiry.FifteenArticleEntiry;
 
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -22,10 +21,20 @@ public class ExampleUnitTest {
 
     @Test
     public void getDoc(){
-        FifteenDocument d = new FifteenDocument();
+        FifteenItemDoc d = new FifteenItemDoc();
 
         d.getData();
 
         System.out.print(d.getList());
+    }
+
+    @Test
+    public void getArticle(){
+        FifteenArticleDoc articleDoc = new FifteenArticleDoc("http://www.15yan.com/topic/bian-ji-tui-jian/2VZwtTfZ9N3/");
+
+        articleDoc.getData();
+        FifteenArticleEntiry entiry = articleDoc.getEntiry();
+
+        System.out.print(entiry.toString());
     }
 }

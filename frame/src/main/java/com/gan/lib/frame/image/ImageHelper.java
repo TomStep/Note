@@ -174,12 +174,12 @@ public class ImageHelper implements ImageTools {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        // When pressed start solving the spring to 0.5.
+                        // When pressed startFragment solving the spring to 0.5.
                         spring.setEndValue(0.3);
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
-                        // When released start solving the spring to 0.
+                        // When released startFragment solving the spring to 0.
                         spring.setEndValue(0);
                         break;
                 }

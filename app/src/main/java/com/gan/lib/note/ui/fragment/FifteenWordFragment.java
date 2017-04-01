@@ -11,9 +11,7 @@ import com.gan.lib.note.R;
 import com.gan.lib.note.viewmodel.fragment.FifteenWordVM;
 
 /**
- *  http://www.15yan.com/topic/bian-ji-tui-jian/
- *
- *
+ *  Fifteen word item
  * Created by tangjun on 2017/3/29.
  */
 
@@ -34,14 +32,10 @@ public class FifteenWordFragment extends ViewModeRecyclerFragment<FifteenWordVM>
 
 
     @Override
-    public void initRefreshLayout() {
-        //设置进度条的颜色主题，最多能设置四种 加载颜色是循环播放的，只要没有完成刷新就会一直循环。
-        getRefreshLayout().setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
-        // 设置手指在屏幕下拉多少距离会触发下拉刷新
-        getRefreshLayout().setDistanceToTriggerSync(300);
-        // 设定下拉圆圈的背景
-        getRefreshLayout().setProgressBackgroundColorSchemeColor(Color.WHITE);
-        // 设置圆圈的大小
-        getRefreshLayout().setSize(SwipeRefreshLayout.DEFAULT);
+    public void initRefreshLayout(SwipeRefreshLayout refreshLayout) {
+        refreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        refreshLayout.setDistanceToTriggerSync(300);
+        refreshLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+        refreshLayout.setSize(SwipeRefreshLayout.DEFAULT);
     }
 }

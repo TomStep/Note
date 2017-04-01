@@ -1,13 +1,15 @@
 package com.gan.lib.note;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import com.gan.lib.frame.base.ViewModelBaseActivity;
 import com.gan.lib.note.ui.view.IMainView;
 import com.gan.lib.note.viewmodel.activity.MainActivityVM;
+import me.yokeyword.fragmentation.SupportFragment;
 
 public class MainActivity extends ViewModelBaseActivity<IMainView,MainActivityVM> implements IMainView{
 
@@ -36,7 +38,7 @@ public class MainActivity extends ViewModelBaseActivity<IMainView,MainActivityVM
 
 
     @Override
-    public android.support.v4.app.FragmentManager getManager() {
+    public FragmentManager getManager() {
         return this.getSupportFragmentManager();
     }
 
@@ -49,5 +51,10 @@ public class MainActivity extends ViewModelBaseActivity<IMainView,MainActivityVM
     public void setViewPagerAdapter(FragmentStatePagerAdapter adapter) {
         getViewPager().setAdapter(adapter);
         getTabLayout().setupWithViewPager(getViewPager());
+    }
+
+    @Override
+    public void startFragment(SupportFragment fragment) {
+        // TODO: 2017/3/31  
     }
 }

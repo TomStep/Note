@@ -5,10 +5,17 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.gan.lib.frame.broad.LocalBroadReceiver;
+import com.gan.lib.frame.broad.LocalBroadUtils;
 import com.gan.lib.frame.utils.LogUtils;
 import com.gan.lib.frame.viewmodel.AbstractViewModel;
 import com.gan.lib.note.adapter.MainViewPagerAdapter;
+import com.gan.lib.note.broad.BroadLauncher;
+import com.gan.lib.note.entiry.FifteenArticleEntiry;
 import com.gan.lib.note.factory.MainViewPagerFragmentFactory;
+import com.gan.lib.note.ui.fragment.FifteenArticleFragment;
+import com.gan.lib.note.ui.fragment.FifteenWordFragment;
 import com.gan.lib.note.ui.view.IMainView;
 
 import java.util.ArrayList;
@@ -24,15 +31,11 @@ public class MainActivityVM extends AbstractViewModel<IMainView> {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
     }
 
     @Override
     public void onBindView(@NonNull IMainView view) {
         super.onBindView(view);
-
-        LogUtils.d("执行了嘛？");
-
         //设置适配器
         view.setViewPagerAdapter(getAdapter(view.getManager()));
     }
@@ -53,4 +56,5 @@ public class MainActivityVM extends AbstractViewModel<IMainView> {
         }
         return mAdapter;
     }
+
 }

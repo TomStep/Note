@@ -1,10 +1,11 @@
 package com.gan.lib.note.data;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
-import com.gan.lib.frame.utils.LogUtils;
+import com.gan.lib.note.broad.BroadLauncher;
 import com.gan.lib.note.entiry.FifteenWordEntiry;
 
 import org.jsoup.Jsoup;
@@ -21,9 +22,13 @@ import java.util.List;
  * Created by tangjun on 2017/3/30.
  */
 
-public class FifteenDocument implements IDocument{
+public class FifteenItemDoc implements IDocument{
 
     private final static String URL = "http://www.15yan.com/";
+
+
+    public FifteenItemDoc() {
+    }
 
     /**
      * <ul class="bucket-posts>
@@ -63,7 +68,7 @@ public class FifteenDocument implements IDocument{
                 String title_sub = li.select("p.post-item-subtitle").text();
                 String userImg = li.select("img.img-circle").attr("src");
                 String userName = li.select("a.post-item-author").attr("title");
-                String url = li.select("a.post-item-img").attr("href");
+                String url = URL + li.select("a.post-item-img").attr("href");
 
                 mList.add(new FifteenWordEntiry(img,title,title_sub,userName,userImg,url));
             }
@@ -72,20 +77,19 @@ public class FifteenDocument implements IDocument{
         }
     }
 
-    private OnDataBackListener onDataListening;
-    private List<FifteenWordEntiry> mList;
+    private ArrayList<FifteenWordEntiry> mList;
 
-    private Handler mHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            if(msg.what == 0){
-                onDataListening.onDataListener(mList);
+
+    public FifteenItemDoc post(final Context context) {
+        final Handler mHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what == 0){
+                    BroadLauncher.SendFifteenItems(context,new Intent(),mList);
+                }
             }
-        }
-    };
+        };
 
-
-    public FifteenDocument post() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -94,17 +98,6 @@ public class FifteenDocument implements IDocument{
             }
         }).start();
         return this;
-    }
-
-
-    public FifteenDocument setOnDataListening(OnDataBackListener onDataListening){
-        this.onDataListening = onDataListening;
-        return this;
-    }
-
-
-    public interface OnDataBackListener{
-        void onDataListener(List<FifteenWordEntiry> list);
     }
 
     public List<FifteenWordEntiry> getList() {

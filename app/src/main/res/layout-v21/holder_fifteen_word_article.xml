@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="entiry"
             type="com.gan.lib.note.entiry.FifteenWordEntiry"/>
@@ -16,7 +17,8 @@
         app:cardCornerRadius="4dp"
         app:cardUseCompatPadding="true"
         app:cardPreventCornerOverlap="true"
-        app:fifteenClick="@{entiry.url}">
+        app:fifteenClick="@{entiry.url}"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless">
 
         <LinearLayout
             android:layout_width="match_parent"

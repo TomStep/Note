@@ -1,5 +1,6 @@
 package com.gan.lib.frame.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -107,5 +108,11 @@ public abstract class ViewModelBaseFragment<T extends IView, R extends AbstractV
      */
     protected void setModelView(@NonNull final T view) {
         getViewModelHelper().setView(view);
+    }
+
+    @Nullable
+    @Override
+    public Context getViewContext() {
+        return _mActivity;
     }
 }

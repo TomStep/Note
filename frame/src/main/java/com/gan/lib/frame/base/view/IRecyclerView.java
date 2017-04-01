@@ -2,10 +2,12 @@ package com.gan.lib.frame.base.view;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+
+import com.gan.lib.frame.base.ViewModelBaseFragment;
 import com.gan.lib.frame.view.recycler.AutoLoadRecyclerView;
 import com.gan.lib.frame.viewmodel.IView;
 
-import java.util.List;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * RecyclerView fragment 的接口view
@@ -36,13 +38,13 @@ public interface IRecyclerView extends IView{
      *  初始化Recycler
      *  可以重写此方法设置自己想要的样式
      */
-    void initRecycler();
+    void initRecycler(RecyclerView recyclerView);
 
     /**
      *  初始化RefreshLayout
      *  可以重写此方法设置自己想要的样式
      */
-    void initRefreshLayout();
+    void initRefreshLayout(SwipeRefreshLayout refreshLayout);
 
     /**
      *  设置下拉刷新监听事件
@@ -75,4 +77,6 @@ public interface IRecyclerView extends IView{
      * 设置自动刷新
      */
     void setAutoRefresh();
+
+    void setStartFragment(SupportFragment f);
 }

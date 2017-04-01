@@ -5,10 +5,12 @@ import android.view.ViewGroup;
 
 import com.gan.lib.frame.utils.LogUtils;
 import com.gan.lib.note.INewViewHolder;
+import com.gan.lib.note.entiry.FifteenArticleEntiry;
 import com.gan.lib.note.entiry.FifteenWordEntiry;
 import com.gan.lib.note.factory.ViewHolderFactory;
 import com.gan.lib.note.ui.holder.FifteenWordVH;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +25,7 @@ public class FifteenWordRecyclerAdapter extends RecyclerView.Adapter {
 
     private List<FifteenWordEntiry> mList;
 
-    public FifteenWordRecyclerAdapter(List<FifteenWordEntiry> list) {
+    public FifteenWordRecyclerAdapter(ArrayList<FifteenWordEntiry> list) {
         mFactory = ViewHolderFactory.instance();
         mList = list;
     }
@@ -47,7 +49,7 @@ public class FifteenWordRecyclerAdapter extends RecyclerView.Adapter {
      * 刷新所有数据
      * @param list list
      */
-    public void updateRecycler(List<FifteenWordEntiry> list){
+    public void updateRecycler(ArrayList<FifteenWordEntiry> list){
         if(mList == null) return;
 
         mList.clear();

@@ -1,6 +1,8 @@
 package com.gan.lib.frame.viewmodel;
 
 import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.gan.lib.frame.base.ViewModelBaseActivity;
@@ -31,4 +33,13 @@ public interface IView {
      * see {@link ViewModelBaseActivity#removeViewModel()} and {@link ViewModelBaseFragment#removeViewModel()}.
      */
     void removeViewModel();
+
+
+
+    /**
+     * Implement this method to get context the ViewModel associated with the Fragment or Activity.
+     * see {@link ViewModelBaseActivity#getViewContext()} and {@link ViewModelBaseFragment#getViewContext()}.
+     */
+    @Nullable
+    Context getViewContext();
 }

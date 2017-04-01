@@ -2,6 +2,8 @@ package com.gan.lib.note.entiry;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.gan.lib.note.BR;
 
@@ -10,7 +12,7 @@ import com.gan.lib.note.BR;
  * Created by tangjun on 2017/3/30.
  */
 
-public class FifteenWordEntiry extends BaseObservable{
+public class FifteenWordEntiry extends BaseObservable implements Parcelable {
 
     private String imgUrl;
     private String title;
@@ -101,4 +103,42 @@ public class FifteenWordEntiry extends BaseObservable{
                 ", userImg='" + userImg + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.imgUrl);
+        dest.writeString(this.title);
+        dest.writeString(this.title_sub);
+        dest.writeString(this.userName);
+        dest.writeString(this.userImg);
+        dest.writeString(this.url);
+    }
+
+    protected FifteenWordEntiry(Parcel in) {
+        this.imgUrl = in.readString();
+        this.title = in.readString();
+        this.title_sub = in.readString();
+        this.userName = in.readString();
+        this.userImg = in.readString();
+        this.url = in.readString();
+    }
+
+    public static final Parcelable.Creator<FifteenWordEntiry> CREATOR = new Parcelable.Creator<FifteenWordEntiry>() {
+        @Override
+        public FifteenWordEntiry createFromParcel(Parcel source) {
+            return new FifteenWordEntiry(source);
+        }
+
+        @Override
+        public FifteenWordEntiry[] newArray(int size) {
+            return new FifteenWordEntiry[size];
+        }
+    };
+
+
 }

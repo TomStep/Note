@@ -38,8 +38,4 @@ public class LocalBroadReceiver extends BroadcastReceiver{
         mLastState = LocalBroadUtils.getStateId(intent);
     }
 
-
-    public void setBroadReceive(OnBroadReceive mBroadReceive) {
-        this.mBroadReceive = mBroadReceive;
-    }
 }

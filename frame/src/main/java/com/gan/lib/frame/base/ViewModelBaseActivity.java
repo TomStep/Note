@@ -1,5 +1,6 @@
 package com.gan.lib.frame.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -92,4 +93,9 @@ public abstract class ViewModelBaseActivity<T extends IView, R extends AbstractV
         return null;
     }
 
+    @Nullable
+    @Override
+    public Context getViewContext() {
+        return this;
+    }
 }

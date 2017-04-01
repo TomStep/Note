@@ -1,20 +1,18 @@
 package com.gan.lib.note.ui.view;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import com.gan.lib.frame.viewmodel.IView;
-import android.support.v4.app.FragmentManager;
 
-import me.yokeyword.fragmentation.SupportFragment;
+import com.gan.lib.frame.viewmodel.IView;
 
 /**
  *
- * Created by tangjun on 2017/3/29.
+ * Created by tangjun on 2017/4/1.
  */
 
-public interface IMainView extends IView{
-
+public interface IMainFragment  extends IView{
 
     /**
      * 获取TabLayout的实例
@@ -42,8 +40,4 @@ public interface IMainView extends IView{
      */
     void setViewPagerAdapter(FragmentStatePagerAdapter adapter);
 
-    /**
-     *  开启新的页面，创建这个fragment
-     */
-    void startFragment(SupportFragment fragment);
 }
