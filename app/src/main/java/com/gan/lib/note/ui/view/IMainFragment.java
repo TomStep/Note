@@ -4,8 +4,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-
 import com.gan.lib.frame.viewmodel.IView;
+import me.yokeyword.fragmentation.SupportFragment;
+
 
 /**
  *
@@ -40,4 +41,8 @@ public interface IMainFragment  extends IView{
      */
     void setViewPagerAdapter(FragmentStatePagerAdapter adapter);
 
+    /**
+     *  开启一个fragment
+     */
+    void startFragment(SupportFragment fragment);
 }

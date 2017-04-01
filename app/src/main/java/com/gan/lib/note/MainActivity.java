@@ -1,17 +1,14 @@
 package com.gan.lib.note;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.gan.lib.frame.base.ViewModelBaseActivity;
+
+import com.gan.lib.frame.base.ViewModelBaseEmptyActivity;
+import com.gan.lib.note.ui.fragment.MainFragment;
 import com.gan.lib.note.ui.view.IMainView;
-import com.gan.lib.note.viewmodel.activity.MainActivityVM;
 import me.yokeyword.fragmentation.SupportFragment;
 
-public class MainActivity extends ViewModelBaseActivity<IMainView,MainActivityVM> implements IMainView{
+
+public class MainActivity extends ViewModelBaseEmptyActivity implements IMainView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,42 +16,14 @@ public class MainActivity extends ViewModelBaseActivity<IMainView,MainActivityVM
 
         setContentView(R.layout.activity_main);
 
-        //viewpager和tabLayout结合
-        setTabLayoutViewPager();
-        //把IMainView传给ViewModel
-        setModelView(this);
+        if(savedInstanceState == null){
+            loadFragmentById(MainFragment.instance());
+        }
     }
 
     @Override
-    public TabLayout getTabLayout() {
-        return (TabLayout)findViewById(R.id.tab_layout);
+    public void loadFragmentById(SupportFragment fragment) {
+        loadRootFragment(R.id.frame_layout,fragment);
     }
 
-
-    @Override
-    public ViewPager getViewPager() {
-        return (ViewPager)findViewById(R.id.viewpager);
-    }
-
-
-    @Override
-    public FragmentManager getManager() {
-        return this.getSupportFragmentManager();
-    }
-
-    @Override
-    public void setTabLayoutViewPager() {
-        getViewPager().addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(getTabLayout()));
-    }
-
-    @Override
-    public void setViewPagerAdapter(FragmentStatePagerAdapter adapter) {
-        getViewPager().setAdapter(adapter);
-        getTabLayout().setupWithViewPager(getViewPager());
-    }
-
-    @Override
-    public void startFragment(SupportFragment fragment) {
-        // TODO: 2017/3/31  
-    }
 }

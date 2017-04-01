@@ -2,7 +2,9 @@
 <layout>
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.gan.lib.note.viewmodel.fragment.MainFragmentVM"/>
 
     </data>
 

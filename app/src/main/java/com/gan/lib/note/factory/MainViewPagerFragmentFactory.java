@@ -80,6 +80,7 @@ public class MainViewPagerFragmentFactory {
                 fragment = FifteenWordFragment.newInstance();
                 break;
             case Ethermetic:
+                fragment = FifteenWordFragment.newInstance();
                 break;
             default:
                 break;
