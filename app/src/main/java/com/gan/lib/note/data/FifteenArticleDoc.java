@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import com.gan.lib.note.broad.BroadLauncher;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
+
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -23,6 +25,7 @@ public class FifteenArticleDoc implements IDocument {
 
     private String url;
     private FifteenArticleEntiry entiry;
+    private Handler mHandler;
 
     public FifteenArticleDoc(String url) {
         this.url = url;
@@ -42,7 +45,9 @@ public class FifteenArticleDoc implements IDocument {
     @Override
     public void getData() {
         try {
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url)
+                    .header("User-Agent","Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Mobile Safari/537.36")
+                    .get();
 
             if(document.select("div.story-cover-image").size() != 0) {
                 String img = document.select("div.story-cover-image").attr("data-bg_img");
@@ -59,7 +64,8 @@ public class FifteenArticleDoc implements IDocument {
 
 
     public void post(final Context context){
-        final Handler mHandler = new Handler(){
+        //发送数据
+        mHandler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what == 0){

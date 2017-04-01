@@ -21,9 +21,10 @@ import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * 带有RecyclerView的基础fragment
+ *    此fragment不用于fragment.start()开启新界面，请在此fragment外再套一层X fragment。用X.start()开启。
  * Created by tangjun on 2017/3/29.
  */
-public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewModelBaseFragment<IRecyclerView,M> implements IRecyclerView {
+public abstract class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewModelBaseFragment<IRecyclerView,M> implements IRecyclerView {
 
     /**
      *  AutoLoadRecyclerView
@@ -133,11 +134,4 @@ public class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewM
             }
         });
     }
-
-    @Override
-    public void setStartFragment(SupportFragment f) {
-        this.start(f);
-    }
-
-
 }

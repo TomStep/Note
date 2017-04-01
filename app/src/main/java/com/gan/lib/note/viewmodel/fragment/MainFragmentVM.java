@@ -30,7 +30,7 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
         switch (intent.getAction()){
             case BroadLauncher.SEND_FIFTEEN_ARTICLE:    //开启FifteenArticleFragment
                 getView().startFragment(FifteenArticleFragment
-                        .instance(BroadLauncher.receiveFifteenArticle(context,intent)));
+                        .newInstance(BroadLauncher.receiveFifteenArticle(context,intent)));
                 break;
         }
     }
@@ -66,4 +66,6 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
                 BroadLauncher.SEND_FIFTEEN_ARTICLE
         };
     }
+
+
 }

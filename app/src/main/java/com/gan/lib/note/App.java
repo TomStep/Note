@@ -17,7 +17,7 @@ public class App extends FrameAppliaction {
         super.onCreate();
 
         //开启视图球
-        startFragmentation(true, Fragmentation.BUBBLE, new ExceptionHandler() {
+        startFragmentation(false, Fragmentation.BUBBLE, new ExceptionHandler() {
             @Override
             public void onException(Exception e) {
 

@@ -77,6 +77,4 @@ public interface IRecyclerView extends IView{
      * 设置自动刷新
      */
     void setAutoRefresh();
-
-    void setStartFragment(SupportFragment f);
 }

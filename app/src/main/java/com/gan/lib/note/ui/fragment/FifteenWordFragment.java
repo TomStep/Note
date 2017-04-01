@@ -11,7 +11,7 @@ import com.gan.lib.note.R;
 import com.gan.lib.note.viewmodel.fragment.FifteenWordVM;
 
 /**
- *  Fifteen word item
+ * Fifteen word item
  * Created by tangjun on 2017/3/29.
  */
 

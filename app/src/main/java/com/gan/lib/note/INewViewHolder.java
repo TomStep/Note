@@ -7,7 +7,6 @@ import com.gan.lib.note.ui.holder.FifteenWordVH;
  * new view holder
  * Created by tangjun on 2017/3/30.
  */
-
 public interface INewViewHolder {
 
     /**

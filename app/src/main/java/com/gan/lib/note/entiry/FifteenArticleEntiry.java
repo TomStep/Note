@@ -16,7 +16,7 @@ public class FifteenArticleEntiry implements Parcelable {
 
     /**
      *
-     *  css代码块
+     *  html代码块
      */
     private String article;
 
@@ -84,7 +84,7 @@ public class FifteenArticleEntiry implements Parcelable {
         dest.writeString(this.article);
     }
 
-    protected FifteenArticleEntiry(Parcel in) {
+    private FifteenArticleEntiry(Parcel in) {
         this.title = in.readString();
         this.title_sub = in.readString();
         this.img = in.readString();
