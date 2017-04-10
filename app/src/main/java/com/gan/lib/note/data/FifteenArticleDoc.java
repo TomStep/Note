@@ -1,13 +1,13 @@
 package com.gan.lib.note.data;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+
+import com.gan.lib.frame.utils.LogUtils;
 import com.gan.lib.note.broad.BroadLauncher;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
 
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -57,6 +57,8 @@ public class FifteenArticleDoc implements IDocument {
                 entiry = new FifteenArticleEntiry(title,title_sub,img,article);
             }
 
+            LogUtils.d("获取文章中。。。。");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,7 +72,8 @@ public class FifteenArticleDoc implements IDocument {
             public void handleMessage(Message msg) {
                 if(msg.what == 0){
                     //发送数据
-                    BroadLauncher.SendFifteenArticle(context,new Intent(),entiry);
+                    LogUtils.d("发送文章");
+                    BroadLauncher.sendFifteenWoridEntiry(context,entiry);
                 }
             }
         };
@@ -87,5 +90,11 @@ public class FifteenArticleDoc implements IDocument {
 
     public FifteenArticleEntiry getEntiry() {
         return entiry;
+    }
+
+
+
+    private void newDialog(Context context){
+
     }
 }

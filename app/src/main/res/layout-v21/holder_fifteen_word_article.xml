@@ -17,7 +17,7 @@
         app:cardCornerRadius="4dp"
         app:cardUseCompatPadding="true"
         app:cardPreventCornerOverlap="true"
-        app:fifteenClick="@{entiry.url}"
+        app:fifteenClick="@{entiry}"
         android:foreground="?android:attr/selectableItemBackgroundBorderless">
 
         <LinearLayout

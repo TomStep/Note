@@ -28,10 +28,10 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
         if(getView() == null) return;
 
         switch (intent.getAction()){
-            case BroadLauncher.SEND_FIFTEEN_ARTICLE:    //开启FifteenArticleFragment
+            case BroadLauncher.SEND_FIFTEEN_ENTIRY:
+                //开启FifteenArticleFragment
                 getView().startFragment(FifteenArticleFragment
-                        .newInstance(BroadLauncher.receiveFifteenArticle(context,intent)));
-                break;
+                        .newInstance(BroadLauncher.receiveFifteenWordToFragment(intent)));
         }
     }
 
@@ -63,7 +63,8 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
     @Override
     public String[] getBroadAction() {
         return new String[]{
-                BroadLauncher.SEND_FIFTEEN_ARTICLE
+                BroadLauncher.SEND_FIFTEEN_ARTICLE,
+                BroadLauncher.SEND_FIFTEEN_ENTIRY
         };
     }
 

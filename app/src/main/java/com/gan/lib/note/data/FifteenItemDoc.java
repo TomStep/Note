@@ -1,7 +1,6 @@
 package com.gan.lib.note.data;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
@@ -85,7 +84,7 @@ public class FifteenItemDoc implements IDocument{
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what == 0){
-                    BroadLauncher.SendFifteenItems(context,new Intent(),mList);
+                    BroadLauncher.sendFifteenItems(context,mList);
                 }
             }
         };

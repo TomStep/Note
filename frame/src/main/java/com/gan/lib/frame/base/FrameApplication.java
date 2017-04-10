@@ -1,6 +1,10 @@
 package com.gan.lib.frame.base;
 
+import android.app.Activity;
 import android.app.Application;
+
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
@@ -10,7 +14,9 @@ import me.yokeyword.fragmentation.helper.ExceptionHandler;
  * Created by tangjun on 2017/3/13.
  */
 
-public class FrameAppliaction extends Application {
+public class FrameApplication extends Application {
+
+    private static RefWatcher refWatcher;
 
     /**
      * 监控fragment小球，可以展示fragment的层级和异常
@@ -36,5 +42,13 @@ public class FrameAppliaction extends Application {
                 // 建议在回调处上传至我们的Crash检测服务器
                 .handleException(exceptionHandler)
                 .install();
+    }
+
+
+    public static RefWatcher getRefWatcher(Activity activity){
+        if(refWatcher == null){
+            LeakCanary.install(activity.getApplication());
+        }
+        return refWatcher;
     }
 }

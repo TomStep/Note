@@ -1,6 +1,6 @@
 package com.gan.lib.note;
 
-import com.gan.lib.frame.base.FrameAppliaction;
+import com.gan.lib.frame.base.FrameApplication;
 
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
@@ -10,7 +10,7 @@ import me.yokeyword.fragmentation.helper.ExceptionHandler;
  * Created by tangjun on 2017/3/14.
  */
 
-public class App extends FrameAppliaction {
+public class App extends FrameApplication {
 
     @Override
     public void onCreate() {

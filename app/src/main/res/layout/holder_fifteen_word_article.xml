@@ -16,7 +16,7 @@
         app:cardCornerRadius="4dp"
         app:cardUseCompatPadding="true"
         app:cardPreventCornerOverlap="true"
-        app:fifteenClick="@{entiry.url}">
+        app:fifteenClick="@{entiry}">
 
         <LinearLayout
             android:layout_width="match_parent"
