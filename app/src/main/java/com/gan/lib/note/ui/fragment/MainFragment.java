@@ -1,8 +1,10 @@
 package com.gan.lib.note.ui.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.transition.Fade;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -72,6 +74,10 @@ public class MainFragment extends ViewModelBaseBindingFragment<IMainFragment,Mai
 
     @Override
     public void startFragment(SupportFragment f) {
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            setEnterTransition(new Fade());
+//            transaction().addSharedElement()
+        }
         start(f);
     }
 }

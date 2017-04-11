@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -81,6 +80,12 @@ public class FifteenArticleFragment
         //初始化Collapsing
         getCollapsingTool().setCollapsedTitleTextColor(Color.WHITE);
         getCollapsingTool().setExpandedTitleColor(Color.TRANSPARENT);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        removeViewModel();
     }
 
     @Nullable

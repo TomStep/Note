@@ -21,20 +21,19 @@ public class FifteenArticleVM extends AbstractViewModel<IFifteenArticle> {
 
     private String toolImgUrl;
     private String toolTitle;
-    private IFifteenArticle mView;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         switch (intent.getAction()) {
             case BroadLauncher.SEND_FIFTEEN_ARTICLE:
-                if(mView == null){
+                if(getView() == null){
                     return;
                 }
 
                 //加载Html代码块
                 FifteenArticleEntiry data = BroadLauncher.receiveFifteenArticle(intent);
                 if(data != null && data.getArticle() != null){
-                    mView.loadWebViewData(data.getArticle());
+                    getView().loadWebViewData(data.getArticle());
                 }
                 break;
         }
@@ -43,7 +42,6 @@ public class FifteenArticleVM extends AbstractViewModel<IFifteenArticle> {
     @Override
     public void onBindView(@NonNull IFifteenArticle view) {
         super.onBindView(view);
-        mView = view;
 
         FifteenWordEntiry data = (FifteenWordEntiry) view.getInitData();
 
@@ -82,9 +80,6 @@ public class FifteenArticleVM extends AbstractViewModel<IFifteenArticle> {
 
     @Override
     public void onDestroy() {
-        if(mView != null){
-            mView = null;
-        }
         super.onDestroy();
     }
 }

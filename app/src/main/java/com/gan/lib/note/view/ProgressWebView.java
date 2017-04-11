@@ -34,7 +34,7 @@ public class ProgressWebView extends WebView {
         mProgressBar = new ProgressBar(context, null,
                 android.R.attr.progressBarStyleHorizontal);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, 10);
+                LinearLayout.LayoutParams.MATCH_PARENT, 5);
         mProgressBar.setLayoutParams(layoutParams);
 
         Drawable drawable = context.getResources().getDrawable(
@@ -46,7 +46,7 @@ public class ProgressWebView extends WebView {
 
 
 
-    public class WebChromeClient extends android.webkit.WebChromeClient {
+     private class WebChromeClient extends android.webkit.WebChromeClient {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
 
@@ -57,7 +57,7 @@ public class ProgressWebView extends WebView {
             }
 
             if(newProgress > 90 && !isStartTime){
-                ObjectAnimator animator = ObjectAnimator.ofInt(mProgressBar, "progress", 20, 90).setDuration(1500);
+                ObjectAnimator animator = ObjectAnimator.ofInt(mProgressBar, "progress",mProgressMax, 100).setDuration(1000);
                 animator.start();
                 animator.addListener(new Animator.AnimatorListener() {
                     @Override
@@ -67,10 +67,7 @@ public class ProgressWebView extends WebView {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if(mProgressMax == 100){
-                            mProgressBar.setProgress(mProgressMax);
-                            mProgressBar.setVisibility(GONE);
-                        }
+                        mProgressBar.setVisibility(GONE);
                     }
 
                     @Override
@@ -85,13 +82,9 @@ public class ProgressWebView extends WebView {
                 });
                 isStartTime = true;
             }else {
-                mProgressBar.setProgress(20);
+                mProgressBar.setProgress(newProgress);
+                mProgressMax = newProgress;
             }
-
-            if(newProgress >= 100){
-                mProgressMax = 100;
-            }
-
 
             super.onProgressChanged(view, newProgress);
         }
@@ -105,5 +98,4 @@ public class ProgressWebView extends WebView {
         mProgressBar.setLayoutParams(lp);
         super.onScrollChanged(l, t, oldl, oldt);
     }
-
 }

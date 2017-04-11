@@ -30,6 +30,7 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
         switch (intent.getAction()){
             case BroadLauncher.SEND_FIFTEEN_ENTIRY:
                 //开启FifteenArticleFragment
+
                 getView().startFragment(FifteenArticleFragment
                         .newInstance(BroadLauncher.receiveFifteenWordToFragment(intent)));
         }
