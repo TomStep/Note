@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class FifteenWordVM extends RecyclerViewModel {
 
-    private FifteenItemDoc document;
     private FifteenWordRecyclerAdapter adapter;
 
     @Override
@@ -51,7 +50,7 @@ public class FifteenWordVM extends RecyclerViewModel {
     public void onBindView(@NonNull final IRecyclerView view) {
         super.onBindView(view);
         //获取document
-        document = new FifteenItemDoc();
+        final FifteenItemDoc document = new FifteenItemDoc();
         view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

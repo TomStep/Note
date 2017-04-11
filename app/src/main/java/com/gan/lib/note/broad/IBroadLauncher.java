@@ -15,4 +15,13 @@ interface IBroadLauncher {
 
     String SEND_FIFTEEN_ENTIRY = "send_fifteen_entiry";
     String KEY_START_FIFTEEN_ENTIRY = "key_start_fifteen_entiry";
+
+    String SEND_ETHER_ITEM_ENTIRY = "send_ether_item_entiry";
+    String KEY_SEND_ETHER_ITEM_ENTIRY = "key_send_ether_item_entiry";
+
+    String START_ETHER_ARTICLE_FRAGMENT = "start_ether_article_fragment";
+    String KEY_START_ETHER_ARTICLE_FRAGMENT = "key_start_ether_article_fragment";
+
+    String SEND_ETEER_ARTICLE = "send_eteer_article";
+    String KEY_SEND_ETEER_ARTICLE = "key_send_eteer_article";
 }

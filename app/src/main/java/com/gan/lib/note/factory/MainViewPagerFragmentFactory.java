@@ -1,6 +1,7 @@
 package com.gan.lib.note.factory;
 
 import com.gan.lib.frame.base.ViewModelBaseFragment;
+import com.gan.lib.note.ui.fragment.EthermeticFragment;
 import com.gan.lib.note.ui.fragment.FifteenWordFragment;
 
 import java.util.HashMap;
@@ -80,7 +81,7 @@ public class MainViewPagerFragmentFactory {
                 fragment = FifteenWordFragment.newInstance();
                 break;
             case Ethermetic:
-                fragment = FifteenWordFragment.newInstance();
+                fragment = EthermeticFragment.newInstance();
                 break;
             default:
                 break;

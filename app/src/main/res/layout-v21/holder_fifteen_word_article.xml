@@ -91,7 +91,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 app:url="@{entiry.imgUrl}"
-                app:error="@{@drawable/ic_launcher}"/>
+                app:error="@{@drawable/error_tool_background}"/>
 
 
         </LinearLayout>

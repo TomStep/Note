@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.gan.lib.frame.broad.LocalBroadUtils;
+import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
 import com.gan.lib.note.entiry.FifteenWordEntiry;
 import java.util.ArrayList;
@@ -72,4 +73,54 @@ public class BroadLauncher implements IBroadLauncher{
         return intent.getParcelableExtra(KEY_START_FIFTEEN_ENTIRY);
     }
 
+    /**
+     * 发送send ethermetic item entiry
+     */
+    public static void sendEtherItemEntiry(Context context, ArrayList<EtherItemEntiry> list){
+        Intent intent = new Intent();
+        intent.setAction(SEND_ETHER_ITEM_ENTIRY);
+        intent.putExtra(KEY_SEND_ETHER_ITEM_ENTIRY,list);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    /**
+     * 接收 ethermetic 数据
+     */
+    public static ArrayList<EtherItemEntiry> receiveEtherItemsEntiry(Intent intent) {
+        return intent.getParcelableArrayListExtra(KEY_SEND_ETHER_ITEM_ENTIRY);
+    }
+
+    /**
+     * 发送ether article 数据
+     */
+    public static void sendToStartEtherArticle(Context context, EtherItemEntiry entiry){
+        Intent intent = new Intent();
+        intent.setAction(START_ETHER_ARTICLE_FRAGMENT);
+        intent.putExtra(KEY_START_ETHER_ARTICLE_FRAGMENT,entiry);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    /**
+     * 接收开起EthmerticFragment的参数
+     */
+    public static EtherItemEntiry receiveEtherArticleInfo(Intent intent){
+        return intent.getParcelableExtra(KEY_START_ETHER_ARTICLE_FRAGMENT);
+    }
+
+    /**
+     * 发送ehermetic 文章代码块
+     */
+    public static void sendEtherArticle(Context context,String url){
+        Intent intent = new Intent();
+        intent.setAction(SEND_ETEER_ARTICLE);
+        intent.putExtra(KEY_SEND_ETEER_ARTICLE,url);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    /**
+     * 接收文章代码块
+     */
+    public static String getEtherArticleStr(Intent intent){
+        return intent.getStringExtra(KEY_SEND_ETEER_ARTICLE);
+    }
 }

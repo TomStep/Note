@@ -9,7 +9,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.gan.lib.frame.viewmodel.AbstractViewModel;
 import com.gan.lib.note.adapter.MainViewPagerAdapter;
 import com.gan.lib.note.broad.BroadLauncher;
+import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.factory.MainViewPagerFragmentFactory;
+import com.gan.lib.note.ui.fragment.EthermeticArticleFragment;
 import com.gan.lib.note.ui.fragment.FifteenArticleFragment;
 import com.gan.lib.note.ui.view.IMainFragment;
 import java.util.ArrayList;
@@ -30,9 +32,16 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
         switch (intent.getAction()){
             case BroadLauncher.SEND_FIFTEEN_ENTIRY:
                 //开启FifteenArticleFragment
-
                 getView().startFragment(FifteenArticleFragment
                         .newInstance(BroadLauncher.receiveFifteenWordToFragment(intent)));
+                break;
+
+            case BroadLauncher.START_ETHER_ARTICLE_FRAGMENT:
+                EtherItemEntiry entiry = BroadLauncher.receiveEtherArticleInfo(intent);
+                if(entiry != null) {
+                    getView().startFragment(EthermeticArticleFragment.newInstance(entiry.getTitle(),entiry.getUrl()));
+                }
+                break;
         }
     }
 
@@ -64,8 +73,8 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
     @Override
     public String[] getBroadAction() {
         return new String[]{
-                BroadLauncher.SEND_FIFTEEN_ARTICLE,
-                BroadLauncher.SEND_FIFTEEN_ENTIRY
+                BroadLauncher.SEND_FIFTEEN_ENTIRY,
+                BroadLauncher.START_ETHER_ARTICLE_FRAGMENT,
         };
     }
 

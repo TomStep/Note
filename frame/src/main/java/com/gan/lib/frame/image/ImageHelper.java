@@ -45,7 +45,7 @@ public class ImageHelper implements ImageTools {
     }
 
     public void loadImage(ImageView imageView,String url){
-        Glide.with(imageView.getContext()).load(url).into(imageView);
+        Glide.with(imageView.getContext()).load(url).centerCrop().into(imageView);
     }
 
     @Override

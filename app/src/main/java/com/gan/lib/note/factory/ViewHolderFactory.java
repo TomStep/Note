@@ -3,7 +3,9 @@ package com.gan.lib.note.factory;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.gan.lib.note.INewViewHolder;
+import com.gan.lib.note.databinding.HolderEthermeticItemBinding;
 import com.gan.lib.note.databinding.HolderFifteenWordArticleBinding;
+import com.gan.lib.note.ui.holder.EthermeticItemVH;
 import com.gan.lib.note.ui.holder.FifteenWordVH;
 
 /**
@@ -34,5 +36,10 @@ public class ViewHolderFactory implements INewViewHolder {
     @Override
     public FifteenWordVH getFifteenVH(ViewGroup viewGroup) {
         return new FifteenWordVH(HolderFifteenWordArticleBinding.inflate(getLayoutInflater(viewGroup),viewGroup,false));
+    }
+
+    @Override
+    public EthermeticItemVH getEthermeticItemVH(ViewGroup viewGroup) {
+        return new EthermeticItemVH(HolderEthermeticItemBinding.inflate(getLayoutInflater(viewGroup),viewGroup,false));
     }
 }

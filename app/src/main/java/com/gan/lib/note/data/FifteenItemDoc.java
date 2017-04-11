@@ -21,7 +21,7 @@ import java.util.List;
  * Created by tangjun on 2017/3/30.
  */
 
-public class FifteenItemDoc implements IDocument{
+public class FifteenItemDoc{
 
     private final static String URL = "http://www.15yan.com/";
 
@@ -52,7 +52,7 @@ public class FifteenItemDoc implements IDocument{
      *     ...
      * </ul>
      */
-    public void getData(){
+    protected void getData(){
         mList = new ArrayList<>();
 
         try {
@@ -78,6 +78,10 @@ public class FifteenItemDoc implements IDocument{
 
     private ArrayList<FifteenWordEntiry> mList;
 
+    protected List<FifteenWordEntiry> getList() {
+        return mList;
+    }
+
 
     public FifteenItemDoc post(final Context context) {
         final Handler mHandler = new Handler(){
@@ -97,9 +101,5 @@ public class FifteenItemDoc implements IDocument{
             }
         }).start();
         return this;
-    }
-
-    public List<FifteenWordEntiry> getList() {
-        return mList;
     }
 }

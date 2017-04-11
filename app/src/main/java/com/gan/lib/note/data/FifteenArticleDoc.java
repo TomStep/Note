@@ -20,7 +20,7 @@ import java.io.IOException;
  * Created by tangjun on 2017/3/31.
  */
 
-public class FifteenArticleDoc implements IDocument {
+public class FifteenArticleDoc{
 
 
     private String url;
@@ -42,8 +42,7 @@ public class FifteenArticleDoc implements IDocument {
      *  </div>
      *
      */
-    @Override
-    public void getData() {
+    protected void getData() {
         try {
             Document document = Jsoup.connect(url)
                     .header("User-Agent","Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Mobile Safari/537.36")
@@ -57,26 +56,29 @@ public class FifteenArticleDoc implements IDocument {
                 entiry = new FifteenArticleEntiry(title,title_sub,img,article);
             }
 
-            LogUtils.d("获取文章中。。。。");
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    protected FifteenArticleEntiry getEntiry() {
+        return entiry;
+    }
+
 
     public void post(final Context context){
         //发送数据
-        mHandler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                if(msg.what == 0){
-                    //发送数据
-                    LogUtils.d("发送文章");
-                    BroadLauncher.sendFifteenWoridEntiry(context,entiry);
+        if(mHandler == null) {
+            mHandler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    if (msg.what == 0) {
+                        //发送数据
+                        BroadLauncher.sendFifteenWoridEntiry(context, entiry);
+                    }
                 }
-            }
-        };
+            };
+        }
 
         new Thread(new Runnable() {
             @Override
@@ -85,16 +87,5 @@ public class FifteenArticleDoc implements IDocument {
                 mHandler.sendEmptyMessage(0);
             }
         }).start();
-    }
-
-
-    public FifteenArticleEntiry getEntiry() {
-        return entiry;
-    }
-
-
-
-    private void newDialog(Context context){
-
     }
 }
