@@ -63,7 +63,8 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
             ArrayList<MainViewPagerFragmentFactory.MainFragments> list = new ArrayList<>();
 
             list.add(MainViewPagerFragmentFactory.MainFragments.FifteenWord);
-            list.add(MainViewPagerFragmentFactory.MainFragments.Ethermetic);
+//            list.add(MainViewPagerFragmentFactory.MainFragments.Ethermetic);
+            list.add(MainViewPagerFragmentFactory.MainFragments.ToonsHot);
 
             mAdapter = new MainViewPagerAdapter(manager, list);
         }

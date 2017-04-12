@@ -9,28 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gan.lib.frame.base.ViewModeRecyclerFragment;
-import com.gan.lib.frame.base.ViewModelBaseFragment;
 import com.gan.lib.note.R;
-import com.gan.lib.note.viewmodel.fragment.FifteenWordVM;
+import com.gan.lib.note.viewmodel.fragment.ToonsHotVM;
 
 /**
- * Fifteen word item
- * Created by tangjun on 2017/3/29.
+ *
+ * Created by tangjun on 2017/4/12.
  */
 
-public class FifteenWordFragment extends ViewModeRecyclerFragment<FifteenWordVM>{
+public class ToonsHotFragment extends ViewModeRecyclerFragment<ToonsHotVM> {
 
     private View mRootView;
 
-    public static ViewModelBaseFragment newInstance() {
-        return new FifteenWordFragment();
+    public static ToonsHotFragment newInstance(){
+        return new ToonsHotFragment();
     }
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(mRootView == null) {
+        if(null == mRootView) {
             mRootView = super.onCreateView(inflater, container, savedInstanceState);
         }
         return mRootView;
@@ -43,6 +41,7 @@ public class FifteenWordFragment extends ViewModeRecyclerFragment<FifteenWordVM>
         setAutoRefresh();
         setModelView(this);
     }
+
 
     @Override
     public void initRefreshLayout(SwipeRefreshLayout refreshLayout) {

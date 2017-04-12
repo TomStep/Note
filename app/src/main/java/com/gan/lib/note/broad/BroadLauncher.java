@@ -7,6 +7,8 @@ import com.gan.lib.frame.broad.LocalBroadUtils;
 import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
 import com.gan.lib.note.entiry.FifteenWordEntiry;
+import com.gan.lib.note.entiry.ToonsHotEntiry;
+
 import java.util.ArrayList;
 
 
@@ -122,5 +124,22 @@ public class BroadLauncher implements IBroadLauncher{
      */
     public static String getEtherArticleStr(Intent intent){
         return intent.getStringExtra(KEY_SEND_ETEER_ARTICLE);
+    }
+
+    /**
+     * 发送ToonsHot信息
+     */
+    public static void sendToonsHotList(Context context, ArrayList<ToonsHotEntiry> list){
+        Intent intent = new Intent();
+        intent.setAction(SEND_TOONS_HOT_ITEMS);
+        intent.putExtra(KEY_SEND_TOONS_HOT_ITEMS,list);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    /**
+     * 接收ToonsHot 数据
+     */
+    public static ArrayList<ToonsHotEntiry> receiveToonsHotList(Intent intent){
+        return intent.getParcelableArrayListExtra(KEY_SEND_TOONS_HOT_ITEMS);
     }
 }

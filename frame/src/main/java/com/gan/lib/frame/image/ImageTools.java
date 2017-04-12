@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.request.target.BaseTarget;
 
 /**
@@ -22,8 +23,10 @@ public interface ImageTools {
     //加载图片
     void loadImage(ImageView image, String image_url, Drawable drawable);
 
+    void loadImage(ImageView imageView, GlideUrl url,Drawable drawable);
+
     //加载图片显示loading
-    public void loadImageLoading(Context context, BaseTarget<Bitmap> baseTarget, String image_url);
+    void loadImageLoading(Context context, BaseTarget<Bitmap> baseTarget, String image_url);
 
     //加载图片设置缩略图支持
     void loadImageThumbnail(ImageView image, String image_url);

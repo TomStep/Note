@@ -58,7 +58,7 @@ public class MainFragment extends ViewModelBaseBindingFragment<IMainFragment,Mai
 
     @Override
     public FragmentManager getManager() {
-        return this.getFragmentManager();
+        return this.getChildFragmentManager();
     }
 
     @Override

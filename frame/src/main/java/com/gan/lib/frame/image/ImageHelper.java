@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BaseTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -51,6 +52,11 @@ public class ImageHelper implements ImageTools {
     @Override
     public void loadImage(ImageView image, String image_url, Drawable drawable) {
         Glide.with(image.getContext()).load(image_url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(image);
+    }
+
+    @Override
+    public void loadImage(ImageView imageView, GlideUrl url, Drawable drawable) {
+        Glide.with(imageView.getContext()).load(url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(imageView);
     }
 
     @Override
@@ -196,7 +202,7 @@ public class ImageHelper implements ImageTools {
     /**
      * 从资源图片中获取Drawable
      */
-    public static Drawable getDrawable(Context context,int id) {
+    private static Drawable getDrawable(Context context,int id) {
         return context.getResources().getDrawable(id);
     }
 }

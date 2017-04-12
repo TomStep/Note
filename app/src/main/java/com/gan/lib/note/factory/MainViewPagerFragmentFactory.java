@@ -3,6 +3,7 @@ package com.gan.lib.note.factory;
 import com.gan.lib.frame.base.ViewModelBaseFragment;
 import com.gan.lib.note.ui.fragment.EthermeticFragment;
 import com.gan.lib.note.ui.fragment.FifteenWordFragment;
+import com.gan.lib.note.ui.fragment.ToonsHotFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +18,8 @@ public class MainViewPagerFragmentFactory {
 
     public enum MainFragments {
         FifteenWord("十五言"),           //15言
-        Ethermetic("Ethermetic")      //Ethermetic
-        ;
+        Ethermetic("Ethermetic"),      //Ethermetic
+        ToonsHot("咚漫");               //咚漫排行榜
 
         private String title;
 
@@ -83,6 +84,8 @@ public class MainViewPagerFragmentFactory {
             case Ethermetic:
                 fragment = EthermeticFragment.newInstance();
                 break;
+            case ToonsHot:
+                fragment = ToonsHotFragment.newInstance();
             default:
                 break;
         }

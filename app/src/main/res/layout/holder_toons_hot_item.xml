@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="entiry"
+            type="com.gan.lib.note.entiry.ToonsHotEntiry"/>
+    </data>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:contentDescription="@string/str_toons_hot_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                app:url="@{entiry.img}"
+                app:error="@{@drawable/error_tool_background}"
+                app:refer="@{entiry.refer}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{entiry.tag}"
+                    android:textSize="12sp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorAccent"/>
+
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@{entiry.title}"
+                    android:gravity="bottom"
+                    android:textSize="16sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text='@{@string/string_toons_hot_author+ "  " + entiry.author}'
+                    android:textSize="12sp"
+                    android:textColor="@color/textColorGrayDark"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</layout>

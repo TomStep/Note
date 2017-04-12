@@ -8,8 +8,6 @@ import com.gan.lib.note.INewViewHolder;
 import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.factory.ViewHolderFactory;
 import com.gan.lib.note.ui.holder.EthermeticItemVH;
-import com.gan.lib.note.ui.holder.FifteenWordVH;
-
 import java.util.ArrayList;
 import java.util.List;
 

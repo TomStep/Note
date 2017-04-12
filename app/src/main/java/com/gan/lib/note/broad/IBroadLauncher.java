@@ -24,4 +24,7 @@ interface IBroadLauncher {
 
     String SEND_ETEER_ARTICLE = "send_eteer_article";
     String KEY_SEND_ETEER_ARTICLE = "key_send_eteer_article";
+
+    String SEND_TOONS_HOT_ITEMS = "send_toons_hot_items";
+    String KEY_SEND_TOONS_HOT_ITEMS = "key_send_toons_hot_items";
 }

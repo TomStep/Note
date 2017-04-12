@@ -5,8 +5,11 @@ import android.view.ViewGroup;
 import com.gan.lib.note.INewViewHolder;
 import com.gan.lib.note.databinding.HolderEthermeticItemBinding;
 import com.gan.lib.note.databinding.HolderFifteenWordArticleBinding;
+import com.gan.lib.note.databinding.HolderToonsHotItemBinding;
+import com.gan.lib.note.entiry.ToonsHotEntiry;
 import com.gan.lib.note.ui.holder.EthermeticItemVH;
 import com.gan.lib.note.ui.holder.FifteenWordVH;
+import com.gan.lib.note.ui.holder.ToonsHotVH;
 
 /**
  *
@@ -41,5 +44,10 @@ public class ViewHolderFactory implements INewViewHolder {
     @Override
     public EthermeticItemVH getEthermeticItemVH(ViewGroup viewGroup) {
         return new EthermeticItemVH(HolderEthermeticItemBinding.inflate(getLayoutInflater(viewGroup),viewGroup,false));
+    }
+
+    @Override
+    public ToonsHotVH getTooonsHotItemVH(ViewGroup viewGroup) {
+        return new ToonsHotVH(HolderToonsHotItemBinding.inflate(getLayoutInflater(viewGroup),viewGroup,false));
     }
 }
