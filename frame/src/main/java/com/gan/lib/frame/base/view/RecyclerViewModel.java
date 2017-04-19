@@ -7,8 +7,7 @@ import com.gan.lib.frame.viewmodel.AbstractViewModel;
  * Created by tangjun on 2017/3/29.
  */
 
-public abstract class RecyclerViewModel extends AbstractViewModel<IRecyclerView>{
-
+public abstract class RecyclerViewModel<I extends IRecyclerView> extends AbstractViewModel<I>{
 
 
 }

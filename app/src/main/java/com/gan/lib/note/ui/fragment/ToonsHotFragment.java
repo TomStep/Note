@@ -7,8 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.gan.lib.frame.base.ViewModeRecyclerFragment;
+import com.gan.lib.frame.base.view.IRecyclerView;
 import com.gan.lib.note.R;
 import com.gan.lib.note.viewmodel.fragment.ToonsHotVM;
 
@@ -17,7 +17,7 @@ import com.gan.lib.note.viewmodel.fragment.ToonsHotVM;
  * Created by tangjun on 2017/4/12.
  */
 
-public class ToonsHotFragment extends ViewModeRecyclerFragment<ToonsHotVM> {
+public class ToonsHotFragment extends ViewModeRecyclerFragment<IRecyclerView,ToonsHotVM> {
 
     private View mRootView;
 
@@ -58,4 +58,5 @@ public class ToonsHotFragment extends ViewModeRecyclerFragment<ToonsHotVM> {
             ((ViewGroup)mRootView.getParent()).removeView(mRootView);
         }
     }
+
 }

@@ -2,14 +2,18 @@ package com.gan.lib.note.viewmodel.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
+import android.view.View;
 
 import com.gan.lib.frame.base.view.IRecyclerView;
 import com.gan.lib.frame.base.view.RecyclerViewModel;
 import com.gan.lib.note.adapter.ToonsHotAdapter;
 import com.gan.lib.note.broad.BroadLauncher;
 import com.gan.lib.note.data.ToonsHotDoc;
+import com.gan.lib.note.entiry.FifteenWordEntiry;
 import com.gan.lib.note.entiry.ToonsHotEntiry;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import java.util.ArrayList;
  * Created by tangjun on 2017/4/12.
  */
 
-public class ToonsHotVM extends RecyclerViewModel {
+public class ToonsHotVM extends RecyclerViewModel<IRecyclerView> {
 
     private ToonsHotAdapter adapter;
 

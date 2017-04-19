@@ -63,7 +63,7 @@ public abstract class ViewModelBaseActivity<T extends IView, R extends AbstractV
     @Override
     public void onStop() {
         super.onStop();
-        mViewModeHelper.onStop();
+        mViewModeHelper.onStop(this);
     }
 
     @CallSuper

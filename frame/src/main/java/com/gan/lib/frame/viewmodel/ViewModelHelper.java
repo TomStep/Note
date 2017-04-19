@@ -181,10 +181,6 @@ public class ViewModelHelper<T extends IView, R extends AbstractViewModel<T>> {
             removeViewModel(fragment.getActivity());
         }
         mBinding = null;
-
-        if(mViewModel.getBroadAction() != null){
-            mViewModel.unRegisterReceiver(fragment.getContext());
-        }
     }
 
     /**
@@ -203,22 +199,24 @@ public class ViewModelHelper<T extends IView, R extends AbstractViewModel<T>> {
             removeViewModel(activity);
         }
         mBinding = null;
-
-        if(mViewModel.getBroadAction() != null){
-            mViewModel.unRegisterReceiver(activity);
-        }
     }
 
     /**
      * Call from {@link Activity#onStop()} or {@link android.support.v4.app.Fragment#onStop()}
      */
-    public void onStop() {
+    public void onStop(Context context) {
+        //关闭广播
+        if(mViewModel.getBroadAction() != null){
+            mViewModel.unRegisterReceiver(context);
+        }
+
         if (mViewModel == null) {
             //no viewmodel for this fragment
             return;
         }
         mViewModel.onStop();
     }
+
 
     /**
      * Call from {@link Activity#onStart()} ()} or {@link android.support.v4.app.Fragment#onStart()} ()}

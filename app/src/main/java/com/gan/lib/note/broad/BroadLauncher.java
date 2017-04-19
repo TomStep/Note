@@ -7,6 +7,7 @@ import com.gan.lib.frame.broad.LocalBroadUtils;
 import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
 import com.gan.lib.note.entiry.FifteenWordEntiry;
+import com.gan.lib.note.entiry.ToonsBookEntiry;
 import com.gan.lib.note.entiry.ToonsHotEntiry;
 
 import java.util.ArrayList;
@@ -141,5 +142,36 @@ public class BroadLauncher implements IBroadLauncher{
      */
     public static ArrayList<ToonsHotEntiry> receiveToonsHotList(Intent intent){
         return intent.getParcelableArrayListExtra(KEY_SEND_TOONS_HOT_ITEMS);
+    }
+
+
+    /**
+     * 点击toonsHot items时发送
+     */
+    public static void OnclickToonsHotItems(Context context,ToonsHotEntiry toonsHotEntiry){
+        Intent intent = new Intent();
+        intent.setAction(ONCLICK_TOONSHOT_ITEAM);
+        intent.putExtra(KEY_ONCLICK_TOONSHOT_ITEAM,toonsHotEntiry);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    /**
+     * 返回ToonsHot数据 从点击事件中
+     */
+    public static ToonsHotEntiry receiveToonsHotListFromOnClickItems(Intent intent){
+        return intent.getParcelableExtra(KEY_ONCLICK_TOONSHOT_ITEAM);
+    }
+
+
+    public static void sendToonsBooksList(Context context, ArrayList<ToonsBookEntiry> list){
+        Intent intent = new Intent();
+        intent.setAction(SEND_ETEER_ARTICLE);
+        intent.putExtra(KEY_SEND_TOONS_BOOKS_ENTIRY,list);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+
+    public static ArrayList<ToonsBookEntiry> receiveToonsBooksList(Intent intent){
+        return intent.getParcelableArrayListExtra(KEY_SEND_TOONS_BOOKS_ENTIRY);
     }
 }

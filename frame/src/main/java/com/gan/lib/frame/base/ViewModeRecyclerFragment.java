@@ -24,7 +24,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  *    此fragment不用于fragment.start()开启新界面，请在此fragment外再套一层X fragment。用X.start()开启。
  * Created by tangjun on 2017/3/29.
  */
-public abstract class ViewModeRecyclerFragment<M extends RecyclerViewModel> extends ViewModelBaseFragment<IRecyclerView,M> implements IRecyclerView {
+public abstract class ViewModeRecyclerFragment<I extends IRecyclerView,M extends RecyclerViewModel<I>> extends ViewModelBaseFragment<I,M> implements IRecyclerView {
 
     /**
      *  AutoLoadRecyclerView

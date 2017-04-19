@@ -27,4 +27,10 @@ interface IBroadLauncher {
 
     String SEND_TOONS_HOT_ITEMS = "send_toons_hot_items";
     String KEY_SEND_TOONS_HOT_ITEMS = "key_send_toons_hot_items";
+
+    String ONCLICK_TOONSHOT_ITEAM = "OnClick_ToonsHot_Iteam";
+    String KEY_ONCLICK_TOONSHOT_ITEAM = "key_onclick_toonshot_iteam";
+
+    String SEND_TOONS_BOOKS_ENTIRY = "send_toons_books_entiry";
+    String KEY_SEND_TOONS_BOOKS_ENTIRY = "key_send_toons_books_entiry";
 }

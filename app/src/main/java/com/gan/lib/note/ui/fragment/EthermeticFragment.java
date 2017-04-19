@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.gan.lib.frame.base.ViewModeRecyclerFragment;
 import com.gan.lib.frame.base.ViewModelBaseFragment;
+import com.gan.lib.frame.base.view.IRecyclerView;
 import com.gan.lib.note.R;
 import com.gan.lib.note.viewmodel.fragment.EthermeticVM;
 
@@ -18,7 +19,7 @@ import com.gan.lib.note.viewmodel.fragment.EthermeticVM;
  * Created by tangjun on 2017/4/11.
  */
 
-public class EthermeticFragment extends ViewModeRecyclerFragment<EthermeticVM> {
+public class EthermeticFragment extends ViewModeRecyclerFragment<IRecyclerView,EthermeticVM> {
 
     private View mRootView;
 

@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Created by tangjun on 2017/4/11.
  */
 
-public class EthermeticVM extends RecyclerViewModel {
+public class EthermeticVM extends RecyclerViewModel<IRecyclerView> {
 
     private EthermeticRecyclerAdapter mAdapter;
 
@@ -76,19 +76,5 @@ public class EthermeticVM extends RecyclerViewModel {
     public void onDestroy() {
         super.onDestroy();
         mAdapter = null;
-    }
-
-    /**
-     * items的点击事件
-     * @param view view
-     */
-    @BindingAdapter({"etherClick"})
-    public static void setOnClickItems(final CardView view, final EtherItemEntiry entiry){
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BroadLauncher.sendToStartEtherArticle(v.getContext(),entiry);
-            }
-        });
     }
 }

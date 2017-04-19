@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by tangjun on 2017/3/29.
  */
 
-public class FifteenWordVM extends RecyclerViewModel {
+public class FifteenWordVM extends RecyclerViewModel<IRecyclerView> {
 
     private FifteenWordRecyclerAdapter adapter;
 
@@ -71,17 +71,4 @@ public class FifteenWordVM extends RecyclerViewModel {
         };
     }
 
-    /**
-     * items的点击事件
-     * @param view view
-     */
-    @BindingAdapter({"fifteenClick"})
-    public static void setOnClickItems(final CardView view, final FifteenWordEntiry entiry){
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BroadLauncher.sendFifteenWordToFragment(v.getContext(),entiry);
-            }
-        });
-    }
 }

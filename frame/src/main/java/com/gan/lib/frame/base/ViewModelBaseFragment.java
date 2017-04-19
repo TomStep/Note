@@ -53,7 +53,7 @@ public abstract class ViewModelBaseFragment<T extends IView, R extends AbstractV
     @Override
     public void onStop() {
         super.onStop();
-        getViewModelHelper().onStop();
+        getViewModelHelper().onStop(this.getContext());
     }
 
     @CallSuper
