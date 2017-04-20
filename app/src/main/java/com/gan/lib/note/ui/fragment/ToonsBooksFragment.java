@@ -50,7 +50,7 @@ public class ToonsBooksFragment extends ViewModelBaseBindingFragment<IToonsBooks
         initTitle();
         setToolbarTitle(getArguments().getString(TITLE));
         //添加fragment
-        addFragmentInFrame(ToonsBookRecyclerFragment.newInstance());
+        addFragmentInFrame(ToonsBookRecyclerFragment.newInstance(getArguments().getString(URL)));
         setModelView(this);
     }
 

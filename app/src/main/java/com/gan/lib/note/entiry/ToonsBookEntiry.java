@@ -10,6 +10,8 @@ import android.os.Parcelable;
 
 public class ToonsBookEntiry implements Parcelable {
 
+
+    private String refer = "http://www.webtoons.com/zh-hans/top?rankingGenre=ALL&target=MALE20";
     private String img;
     private String title;
     private String date;
@@ -74,6 +76,14 @@ public class ToonsBookEntiry implements Parcelable {
         this.url = url;
     }
 
+    public String getRefer() {
+        return refer;
+    }
+
+    public void setRefer(String refer) {
+        this.refer = refer;
+    }
+
     @Override
     public String toString() {
         return "ToonsBookEntiry{" +
@@ -93,6 +103,7 @@ public class ToonsBookEntiry implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.refer);
         dest.writeString(this.img);
         dest.writeString(this.title);
         dest.writeString(this.date);
@@ -102,6 +113,7 @@ public class ToonsBookEntiry implements Parcelable {
     }
 
     protected ToonsBookEntiry(Parcel in) {
+        this.refer = in.readString();
         this.img = in.readString();
         this.title = in.readString();
         this.date = in.readString();
@@ -110,7 +122,7 @@ public class ToonsBookEntiry implements Parcelable {
         this.url = in.readString();
     }
 
-    public static final Parcelable.Creator<ToonsBookEntiry> CREATOR = new Parcelable.Creator<ToonsBookEntiry>() {
+    public static final Creator<ToonsBookEntiry> CREATOR = new Creator<ToonsBookEntiry>() {
         @Override
         public ToonsBookEntiry createFromParcel(Parcel source) {
             return new ToonsBookEntiry(source);

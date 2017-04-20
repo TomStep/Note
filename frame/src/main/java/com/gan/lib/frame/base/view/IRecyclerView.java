@@ -1,14 +1,9 @@
 package com.gan.lib.frame.base.view;
 
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-
-import com.gan.lib.frame.base.ViewModelBaseFragment;
 import com.gan.lib.frame.view.recycler.AutoLoadRecyclerView;
 import com.gan.lib.frame.viewmodel.IView;
-
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * RecyclerView fragment 的接口view

@@ -165,7 +165,7 @@ public class BroadLauncher implements IBroadLauncher{
 
     public static void sendToonsBooksList(Context context, ArrayList<ToonsBookEntiry> list){
         Intent intent = new Intent();
-        intent.setAction(SEND_ETEER_ARTICLE);
+        intent.setAction(SEND_TOONS_BOOKS_ENTIRY);
         intent.putExtra(KEY_SEND_TOONS_BOOKS_ENTIRY,list);
         LocalBroadUtils.sendBroadcast(context,intent);
     }

@@ -4,6 +4,7 @@ import android.view.ViewGroup;
 
 import com.gan.lib.note.ui.holder.EthermeticItemVH;
 import com.gan.lib.note.ui.holder.FifteenWordVH;
+import com.gan.lib.note.ui.holder.ToonsBookVH;
 import com.gan.lib.note.ui.holder.ToonsHotVH;
 import com.gan.lib.note.viewmodel.fragment.EthermeticVM;
 
@@ -24,6 +25,14 @@ public interface INewViewHolder {
      */
     EthermeticItemVH getEthermeticItemVH(ViewGroup viewGroup);
 
-    ToonsHotVH getTooonsHotItemVH(ViewGroup viewGroup);
+    /**
+     * 获取holder ToonsHotVH
+     */
+    ToonsHotVH getToonsHotItemVH(ViewGroup viewGroup);
+
+    /**
+     * 获取holder ToonsBookVH
+     */
+    ToonsBookVH getToonsBookItemVH(ViewGroup viewGroup);
 
 }

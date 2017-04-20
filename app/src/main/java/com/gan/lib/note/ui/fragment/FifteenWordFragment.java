@@ -47,7 +47,7 @@ public class FifteenWordFragment extends ViewModeRecyclerFragment<IRecyclerView,
 
     @Override
     public void initRefreshLayout(SwipeRefreshLayout refreshLayout) {
-        refreshLayout.setColorSchemeColors(Color.alpha(R.color.colorPrimary));
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
         refreshLayout.setDistanceToTriggerSync(300);
         refreshLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
         refreshLayout.setSize(SwipeRefreshLayout.DEFAULT);

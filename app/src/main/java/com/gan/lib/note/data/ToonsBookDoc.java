@@ -62,7 +62,6 @@ public class ToonsBookDoc {
                 public void handleMessage(Message msg) {
                     if (msg.what == 0) {
                         //发送数据
-                        getData(url);
                         BroadLauncher.sendToonsBooksList(context,getList());
                     }
                 }

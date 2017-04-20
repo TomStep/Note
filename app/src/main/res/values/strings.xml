@@ -21,5 +21,6 @@
     <string name="input_detail">请输入任务</string>
     <string name="string_toons_hot_author">作者:</string>
     <string name="str_toons_hot_img">咚漫热门漫画</string>
+    <string name="refresh_color">#00BCD4</string>
 
 </resources>

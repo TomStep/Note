@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="entiry"
+            type="com.gan.lib.note.entiry.ToonsBookEntiry"/>
+    </data>
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:url="@{entiry.img}"
+                app:error="@{@drawable/error_tool_background}"
+                app:refer="@{entiry.refer}"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.gan.lib.frame.view.font.FontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{entiry.title}"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/textColorGray"
+                    android:textSize="16sp"
+                    android:id="@+id/fontTextView2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp">
+
+
+                    <com.gan.lib.frame.view.font.FontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{entiry.date}"
+                        android:textSize="12sp"
+                        android:textColor="@color/textColorGrayDark"
+                        android:paddingBottom="2dp"/>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

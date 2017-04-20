@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 
 import com.gan.lib.frame.base.ViewModeRecyclerFragment;
 import com.gan.lib.frame.base.view.IRecyclerView;
+import com.gan.lib.frame.utils.LogUtils;
 import com.gan.lib.note.R;
+import com.gan.lib.note.ui.view.IToonsBookRecycler;
 import com.gan.lib.note.viewmodel.fragment.ToonsBookRecyclerVM;
 
 /**
@@ -18,13 +20,14 @@ import com.gan.lib.note.viewmodel.fragment.ToonsBookRecyclerVM;
  * Created by tangjun on 2017/4/19.
  */
 
-public class ToonsBookRecyclerFragment extends ViewModeRecyclerFragment<IRecyclerView,ToonsBookRecyclerVM> {
+public class ToonsBookRecyclerFragment extends ViewModeRecyclerFragment<IToonsBookRecycler,ToonsBookRecyclerVM> implements IToonsBookRecycler{
     private View mRootView;
 
-    public static ToonsBookRecyclerFragment newInstance() {
-        
+    private final static String URL = "url";
+
+    public static ToonsBookRecyclerFragment newInstance(String url) {
         Bundle args = new Bundle();
-        
+        args.putString(URL,url);
         ToonsBookRecyclerFragment fragment = new ToonsBookRecyclerFragment();
         fragment.setArguments(args);
         return fragment;
@@ -50,18 +53,20 @@ public class ToonsBookRecyclerFragment extends ViewModeRecyclerFragment<IRecycle
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         setAutoRefresh();
         setModelView(this);
-
     }
 
     @Override
     public void initRefreshLayout(SwipeRefreshLayout refreshLayout) {
-        refreshLayout.setColorSchemeColors(Color.alpha(R.color.colorPrimary));
+        refreshLayout.setColorSchemeResources(R.color.colorPrimary);
         refreshLayout.setDistanceToTriggerSync(300);
         refreshLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
         refreshLayout.setSize(SwipeRefreshLayout.DEFAULT);
     }
 
+    @Override
+    public String getUrl(int page) {
+        return getArguments().getString(URL)+"&page="+page;
+    }
 }

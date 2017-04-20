@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.Toast;
 
+import com.gan.lib.frame.utils.LogUtils;
 import com.gan.lib.frame.viewmodel.AbstractViewModel;
 import com.gan.lib.note.adapter.MainViewPagerAdapter;
 import com.gan.lib.note.broad.BroadLauncher;
