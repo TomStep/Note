@@ -51,4 +51,16 @@ public class FrameApplication extends Application {
         }
         return refWatcher;
     }
+
+    private static Application app;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        app = this;
+    }
+
+    public static Application getApplication() {
+        return app;
+    }
 }

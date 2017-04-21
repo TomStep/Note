@@ -50,7 +50,7 @@ public class ToonsBooksFragment extends ViewModelBaseBindingFragment<IToonsBooks
         initTitle();
         setToolbarTitle(getArguments().getString(TITLE));
         //添加fragment
-        addFragmentInFrame(ToonsBookRecyclerFragment.newInstance(getArguments().getString(URL)));
+        loadRootFragment(getFrameLayout().getId(),ToonsBookRecyclerFragment.newInstance(getArguments().getString(URL)));
         setModelView(this);
     }
 
@@ -79,10 +79,4 @@ public class ToonsBooksFragment extends ViewModelBaseBindingFragment<IToonsBooks
         getToolbar().setTitle(title);
         getToolbar().setTitleTextColor(Color.WHITE);
     }
-
-    @Override
-    public void addFragmentInFrame(SupportFragment fragment) {
-        loadRootFragment(getFrameLayout().getId(),fragment);
-    }
-
 }

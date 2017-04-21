@@ -52,7 +52,7 @@ public class EthermeticRecyclerAdapter extends RecyclerView.Adapter {
 
         mList.clear();
         mList.addAll(list);
-        this.notifyItemRangeChanged(0,list.size());
+        this.notifyDataSetChanged();
     }
 
     /**
@@ -63,6 +63,6 @@ public class EthermeticRecyclerAdapter extends RecyclerView.Adapter {
         if(mList == null) return;
 
         this.mList.addAll(list);
-        this.notifyItemRangeChanged(list.size()-1,mList.size());
+        this.notifyItemRangeChanged(mList.size()-list.size(),mList.size());
     }
 }

@@ -19,6 +19,15 @@ public class AutoLoadRecyclerView extends RecyclerView implements LoadFinishCall
     private boolean isLoadingMore;
     private RecyclerView.Adapter adapter;
 
+    /**
+     * @param loadMoreIndex 设置从倒数第几个开始加载数据
+     */
+    public void setLoadMoreIndex(int loadMoreIndex) {
+        this.loadMoreIndex = loadMoreIndex;
+    }
+
+    private int loadMoreIndex = 5;
+
     public AutoLoadRecyclerView(Context context) {
         this(context, null);
     }
@@ -92,11 +101,10 @@ public class AutoLoadRecyclerView extends RecyclerView implements LoadFinishCall
                 int totalItemCount = AutoLoadRecyclerView.this.getAdapter().getItemCount();
 
                 if (loadMoreListener != null && !isLoadingMore && lastVisibleItem >= totalItemCount -
-                        2 && dy > 0) {
+                        loadMoreIndex && dy > 0) {
                     isLoadingMore = true;
                     loadMoreListener.loadMore();
                 }
-
             }
         }
 

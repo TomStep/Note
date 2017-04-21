@@ -40,9 +40,4 @@ public interface IMainFragment  extends IView{
      *  配置viewPager Adapter
      */
     void setViewPagerAdapter(FragmentStatePagerAdapter adapter);
-
-    /**
-     *  开启一个fragment
-     */
-    void startFragment(SupportFragment fragment);
 }

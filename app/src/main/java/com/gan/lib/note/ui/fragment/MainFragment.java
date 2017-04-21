@@ -72,12 +72,4 @@ public class MainFragment extends ViewModelBaseBindingFragment<IMainFragment,Mai
         getTabLayout().setupWithViewPager(getViewPager());
     }
 
-    @Override
-    public void startFragment(SupportFragment f) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            setEnterTransition(new Fade());
-//            transaction().addSharedElement()
-        }
-        start(f);
-    }
 }

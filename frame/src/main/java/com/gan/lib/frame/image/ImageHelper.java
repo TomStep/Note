@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BaseTarget;
@@ -18,6 +19,7 @@ import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringSystem;
 import com.gan.lib.frame.R;
+import com.gan.lib.frame.base.FrameApplication;
 import com.gan.lib.frame.image.transformation.GlideCircleTransform;
 import com.gan.lib.frame.image.transformation.GlideRoundTransform;
 
@@ -31,8 +33,11 @@ import net.qiujuer.genius.blur.StackBlur;
 public class ImageHelper implements ImageTools {
 
     private static ImageHelper imageHelper;
+    private RequestManager mGlide;
 
-    private ImageHelper(){}
+    private ImageHelper(){
+        mGlide = Glide.with(FrameApplication.getApplication());
+    }
 
     public static ImageHelper instance(){
         if(imageHelper == null){
@@ -46,43 +51,42 @@ public class ImageHelper implements ImageTools {
     }
 
     public void loadImage(ImageView imageView,String url){
-        Glide.with(imageView.getContext()).load(url).centerCrop().into(imageView);
+        mGlide.load(url).centerCrop().into(imageView);
     }
 
     @Override
     public void loadImage(ImageView image, String image_url, Drawable drawable) {
-        Glide.with(image.getContext()).load(image_url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(image);
+        mGlide.load(image_url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(image);
     }
 
     @Override
     public void loadImage(ImageView imageView, GlideUrl url, Drawable drawable) {
-        Glide.with(imageView.getContext()).load(url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(imageView);
+        mGlide.load(url).placeholder(drawable).centerCrop().crossFade().error(drawable).into(imageView);
     }
 
     @Override
     public void loadImageLoading(Context context, BaseTarget<Bitmap> baseTarget, String image_url) {
-        Glide.with(context).load(image_url).asBitmap().into(baseTarget);
+        mGlide.load(image_url).asBitmap().into(baseTarget);
     }
 
     @Override
     public void loadImageThumbnail(ImageView image, String image_url) {
-        Glide.with(image.getContext()).load(image_url).thumbnail(0.1f).into(image);
+        mGlide.load(image_url).thumbnail(0.1f).into(image);
     }
 
     @Override
     public void loadImageHolder(ImageView image, String image_url, int success_image, int error_image) {
-        Glide.with(image.getContext()).load(image_url).placeholder(success_image).error(error_image).into(image);
+        mGlide.load(image_url).placeholder(success_image).error(error_image).into(image);
     }
 
     @Override
     public void loadImageRound(ImageView imageView, String image_url) {
-        Glide.with(imageView.getContext()).load(image_url).transform(new GlideRoundTransform(imageView.getContext())).crossFade().into(imageView);
+        mGlide.load(image_url).transform(new GlideRoundTransform(imageView.getContext())).crossFade().into(imageView);
     }
 
     @Override
     public void loadImageCircle(ImageView imageView, String image_url, Drawable error) {
-        Glide.with(imageView.getContext())
-                .load(image_url)
+        mGlide.load(image_url)
                 .placeholder(error)
                 .crossFade()
                 .transform(new GlideCircleTransform(imageView.getContext()))
@@ -94,12 +98,12 @@ public class ImageHelper implements ImageTools {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             imageView.setBackground(getDrawable(imageView.getContext(), R.drawable.base_image_loop_solid_circle));
         }
-        Glide.with(imageView.getContext()).load(image_id).crossFade().transform(new GlideCircleTransform(imageView.getContext())).into(imageView);
+        mGlide.load(image_id).crossFade().transform(new GlideCircleTransform(imageView.getContext())).into(imageView);
     }
 
     @Override
     public void loadImageBlur(final ImageView imageView, final int radius, String image_url) {
-        Glide.with(imageView.getContext()).load(image_url)
+        mGlide.load(image_url)
                 .asBitmap()
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -112,7 +116,7 @@ public class ImageHelper implements ImageTools {
 
     @Override
     public void loadImageBlur(final ImageView imageView, final int radius, int id) {
-        Glide.with(imageView.getContext()).load(id)
+        mGlide.load(id)
                 .asBitmap()
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -125,7 +129,7 @@ public class ImageHelper implements ImageTools {
 
     @Override
     public void loadImageDefaultBlur(final ImageView imageView, String image_url) {
-        Glide.with(imageView.getContext()).load(image_url)
+        mGlide.load(image_url)
                 .asBitmap()
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -142,7 +146,7 @@ public class ImageHelper implements ImageTools {
      */
     @Override
     public void loadImage2TextTop(String url, final TextView view) {
-        Glide.with(view.getContext()).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
+        mGlide.load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(resource);
@@ -196,7 +200,7 @@ public class ImageHelper implements ImageTools {
 
     @Override
     public void loadGIF(ImageView imageView, String image_url) {
-        Glide.with(imageView.getContext()).load(image_url).asGif().into(imageView);
+        mGlide.load(image_url).asGif().into(imageView);
     }
 
     /**

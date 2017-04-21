@@ -3,6 +3,7 @@ package com.gan.lib.note.broad;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.gan.lib.frame.broad.LocalBroadUtils;
 import com.gan.lib.note.entiry.EtherItemEntiry;
 import com.gan.lib.note.entiry.FifteenArticleEntiry;
@@ -173,5 +174,16 @@ public class BroadLauncher implements IBroadLauncher{
 
     public static ArrayList<ToonsBookEntiry> receiveToonsBooksList(Intent intent){
         return intent.getParcelableArrayListExtra(KEY_SEND_TOONS_BOOKS_ENTIRY);
+    }
+
+    public static void OnclickToonsBookItem(Context context,ToonsBookEntiry entiry){
+        Intent intent = new Intent();
+        intent.setAction(ONCLICK_TOONS_BOOK_ITEM);
+        intent.putExtra(KEY_ONCLICK_TOONS_BOOK_ITEM,entiry);
+        LocalBroadUtils.sendBroadcast(context,intent);
+    }
+
+    public static ToonsBookEntiry receiveToonsBookItem(Intent intent){
+        return intent.getParcelableExtra(KEY_ONCLICK_TOONS_BOOK_ITEM);
     }
 }

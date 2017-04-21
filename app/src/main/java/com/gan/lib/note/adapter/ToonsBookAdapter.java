@@ -24,8 +24,8 @@ public class ToonsBookAdapter extends RecyclerView.Adapter {
 
     public ToonsBookAdapter(ArrayList<ToonsBookEntiry> entiries) {
         mFactory = ViewHolderFactory.instance();
-
-        mList = entiries;
+        mList = new ArrayList<>();
+        mList.addAll(entiries);
     }
 
     @Override
@@ -50,6 +50,13 @@ public class ToonsBookAdapter extends RecyclerView.Adapter {
 
         mList.clear();
         mList.addAll(list);
-        this.notifyItemRangeChanged(0,list.size());
+        this.notifyDataSetChanged();
+    }
+
+    public void addDate(ArrayList<ToonsBookEntiry> list){
+        if (null == mList) return;
+
+        mList.addAll(list);
+        this.notifyItemRangeChanged(mList.size()-list.size(),mList.size());
     }
 }

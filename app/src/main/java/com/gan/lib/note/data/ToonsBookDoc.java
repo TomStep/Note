@@ -26,7 +26,17 @@ public class ToonsBookDoc {
     private ArrayList<ToonsBookEntiry> mList;
     private Handler mHandler;
 
-    protected void getData(String url){
+    /**
+     * 判断是否是最后一页
+     */
+    private boolean isFinal=false;
+
+    /**
+     * 获取数据，判断当前是查询或下滑到下一页。若查询，则判断不是最后一页。
+     * @param url   url
+     * @param isSearch  是否在查询
+     */
+    protected void getData(String url,boolean isSearch){
         mList = new ArrayList<>();
 
         try {
@@ -45,7 +55,11 @@ public class ToonsBookDoc {
                 String like = li.select("span._likeitArea").text().replace("like","");
                 String tx = li.select("span.tx").text();
 
-                mList.add(new ToonsBookEntiry(img,title,date,like,tx,a_url));
+                if(!isFinal) {
+                    mList.add(new ToonsBookEntiry(img, title, date, like, tx, a_url));
+                }
+
+                if("#1".equals(tx) && !isSearch) isFinal = true;
             }
 
         } catch (IOException e) {
@@ -54,7 +68,7 @@ public class ToonsBookDoc {
 
     }
 
-    public void post(final Context context, final String url){
+    public void post(final Context context, final String url, final boolean isSearch){
         //发送数据
         if(mHandler == null) {
             mHandler = new Handler() {
@@ -71,12 +85,36 @@ public class ToonsBookDoc {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getData(url);
+                getData(url,isSearch);
                 mHandler.sendEmptyMessage(0);
             }
         }).start();
+    }
 
+    /**
+     * 默认下滑
+     */
+    public void post(final Context context,final String url){
+        //发送数据
+        if(mHandler == null) {
+            mHandler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    if (msg.what == 0) {
+                        //发送数据
+                        BroadLauncher.sendToonsBooksList(context,getList());
+                    }
+                }
+            };
+        }
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getData(url,false);
+                mHandler.sendEmptyMessage(0);
+            }
+        }).start();
     }
 
 

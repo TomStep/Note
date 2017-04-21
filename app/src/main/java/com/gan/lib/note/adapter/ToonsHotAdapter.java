@@ -46,6 +46,6 @@ public class ToonsHotAdapter extends RecyclerView.Adapter {
 
         mList.clear();
         mList.addAll(list);
-        this.notifyItemRangeChanged(0,list.size());
+        this.notifyDataSetChanged();
     }
 }

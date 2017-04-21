@@ -33,4 +33,8 @@ interface IBroadLauncher {
 
     String SEND_TOONS_BOOKS_ENTIRY = "send_toons_books_entiry";
     String KEY_SEND_TOONS_BOOKS_ENTIRY = "key_send_toons_books_entiry";
+
+    String ONCLICK_TOONS_BOOK_ITEM = "onclick_toons_book_item";
+    String KEY_ONCLICK_TOONS_BOOK_ITEM = "key_onclick_toons_book_item";
+
 }

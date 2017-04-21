@@ -19,6 +19,4 @@ public interface IToonsBooks extends IView{
     FrameLayout getFrameLayout();
 
     void setToolbarTitle(String title);
-
-    void addFragmentInFrame(SupportFragment fragment);
 }

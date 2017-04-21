@@ -1,6 +1,9 @@
 package com.gan.lib.note.ui.holder;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import com.gan.lib.note.broad.BroadLauncher;
 import com.gan.lib.note.databinding.HolderToonsBookItemBinding;
 import com.gan.lib.note.entiry.ToonsBookEntiry;
 
@@ -18,8 +21,13 @@ public class ToonsBookVH extends RecyclerView.ViewHolder {
         mBinding = binding;
     }
 
-
-    public void setBinding(ToonsBookEntiry entiry){
+    public void setBinding(final ToonsBookEntiry entiry){
         mBinding.setEntiry(entiry);
+        mBinding.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BroadLauncher.OnclickToonsBookItem(v.getContext(),entiry);
+            }
+        });
     }
 }

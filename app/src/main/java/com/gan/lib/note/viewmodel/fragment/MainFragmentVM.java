@@ -37,7 +37,7 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
             //开启十五言的fragment
             case BroadLauncher.SEND_FIFTEEN_ENTIRY:
                 //开启FifteenArticleFragment
-                getView().startFragment(FifteenArticleFragment
+                getView().startInIView(FifteenArticleFragment
                         .newInstance(BroadLauncher.receiveFifteenWordToFragment(intent)));
                 break;
 
@@ -45,14 +45,14 @@ public class MainFragmentVM extends AbstractViewModel<IMainFragment> {
             case BroadLauncher.START_ETHER_ARTICLE_FRAGMENT:
                 EtherItemEntiry entiry = BroadLauncher.receiveEtherArticleInfo(intent);
                 if(entiry != null) {
-                    getView().startFragment(EthermeticArticleFragment.newInstance(entiry.getTitle(),entiry.getUrl()));
+                    getView().startInIView(EthermeticArticleFragment.newInstance(entiry.getTitle(),entiry.getUrl()));
                 }
                 break;
 
             case BroadLauncher.ONCLICK_TOONSHOT_ITEAM:
                 ToonsHotEntiry toonsHotEntiry = BroadLauncher.receiveToonsHotListFromOnClickItems(intent);
                 if(toonsHotEntiry != null){
-                    getView().startFragment(ToonsBooksFragment.newInstance(toonsHotEntiry.getTitle(),toonsHotEntiry.getUrl()));
+                    getView().startInIView(ToonsBooksFragment.newInstance(toonsHotEntiry.getTitle(),toonsHotEntiry.getUrl()));
                 }
         }
     }
